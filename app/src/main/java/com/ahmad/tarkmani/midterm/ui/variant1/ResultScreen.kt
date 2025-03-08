@@ -146,6 +146,7 @@ fun ResultScreen(navController: NavController) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Button(onClick = {
+                MainActivity.clear()
                 navController.navigate("main")
             }) {
                 Text(text = "EXIT")

@@ -19,17 +19,31 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ahmad.tarkmani.midterm.ui.Patient
 import com.ahmad.tarkmani.midterm.ui.theme.MyApplicationTheme
 import com.ahmad.tarkmani.midterm.ui.variant1.HomeScreen
 import com.ahmad.tarkmani.midterm.ui.variant1.OrderScreen
 import com.ahmad.tarkmani.midterm.ui.variant1.ResultScreen
+import com.ahmad.tarkmani.midterm.ui.variant2.ListScreen
+import com.ahmad.tarkmani.midterm.ui.variant2.LoginScreen
+import com.ahmad.tarkmani.midterm.ui.variant2.PatientScreen
 
 class MainActivity : ComponentActivity() {
     companion object {
         var client = ""
         var phone = ""
+        var user = ""
+        var patients = mutableListOf<Patient>()
         var orderPrice = 0.0
         var deliveryFee = 0.0
+        fun clear(){
+            client = ""
+            phone = ""
+            user = ""
+            patients.clear()
+            orderPrice = 0.0
+            deliveryFee = 0.0
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +70,16 @@ class MainActivity : ComponentActivity() {
                         composable("result") {
                             ResultScreen(navController)
                         }
+                        composable("login") {
+                            LoginScreen(navController, this@MainActivity)
+                        }
+                        composable("patient") {
+                            PatientScreen(navController, this@MainActivity)
+                        }
+                        composable("list") {
+                            ListScreen(navController)
+                        }
+
 
                     }
                 }
@@ -78,7 +102,9 @@ fun MainScreen(navController: NavHostController) {
         ) {
             Text(text = "Variant 1")
         }
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = {
+            navController.navigate("login")
+        }) {
             Text(text = "Variant 2")
         }
     }
