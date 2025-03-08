@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_order_screen">OrderScreen</string>
+</resources>
